@@ -19,10 +19,16 @@ public class keyPickup1 : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        CanPickKey = true;
+        if(col.gameObject.tag == "RayCast")
+        {
+            CanPickKey = true;
+        }
     }
     void OnTriggerExit(Collider col)
     {
-        CanPickKey = false;
+        if(col.gameObject.tag == "RayCast")
+        {
+            CanPickKey = false;
+        }
     }
 }

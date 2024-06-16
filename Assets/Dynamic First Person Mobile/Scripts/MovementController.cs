@@ -96,7 +96,6 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
         {
             get
             {
-        #if UNITY_EDITOR
                 if (Input_Crouch)
                     return m_CrouchSpeed;
                 else if (Input_Sprint)
@@ -105,25 +104,13 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
                     return m_WalkSpeed;
                 else
                     return 0.0f;
-        #elif UNITY_ANDROID
-                if (Input_Crouch)
-                    return m_CrouchSpeed;
-                else if (Input_Sprint)
-                    return m_RunSpeed;
-                else if (Input_Movement.magnitude != 0)
-                    return m_WalkSpeed;
-                else
-                    return 0.0f;
-        #else
-                return 0.0f; // Default case for other platforms
-        #endif
             }
         }
 
 
-    #if UNITY_EDITOR
-        public Vector2 External_Input_Movement;
-    #endif
+
+    public Vector2 External_Input_Movement;
+
 
 
         private void Start() 
@@ -163,13 +150,9 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
         {
             Vector2 Input = Vector2.zero; // Initialize the Input variable
 
-        #if UNITY_EDITOR
+
             Input.x = Input_Movement.x == 0 ? External_Input_Movement.x : Input_Movement.x;
             Input.y = Input_Movement.y == 0 ? External_Input_Movement.y : Input_Movement.y;
-        #elif UNITY_ANDROID
-            Input.x = Input_Movement.x;
-            Input.y = Input_Movement.y;
-        #endif
 
             Vector3 WalkTargetDIrection =
                 Input.y * transform.forward * m_speed +

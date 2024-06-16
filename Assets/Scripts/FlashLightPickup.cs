@@ -25,10 +25,16 @@ public class FlashLightPickup : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        canEnableLight = true;
+        if(col.gameObject.tag == "RayCast")
+        {
+            canEnableLight = true;
+        }
     }
     void OnTriggerExit(Collider col)
     {
-        canEnableLight = false;
+        if(col.gameObject.tag == "RayCast")
+        {
+            canEnableLight = false;
+        }
     }
 }

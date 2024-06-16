@@ -37,8 +37,6 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
 
         private void Update() {
 
-        #if UNITY_EDITOR
-
             cameraLook.delta += new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * _Sensitivity;
 
             movementController.External_Input_Movement = (Input.GetAxis("Horizontal") * Vector2.right + Input.GetAxis("Vertical") * Vector2.up).normalized;
@@ -57,8 +55,6 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
                 movementController.Input_Crouch = true;
             if (Input.GetKeyUp(CrouchInput))
                 movementController.Input_Crouch = false;
-
-        #endif
 
         }
 
