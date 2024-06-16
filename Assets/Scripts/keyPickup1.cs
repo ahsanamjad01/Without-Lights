@@ -17,16 +17,17 @@ public class keyPickup1 : MonoBehaviour
             HasKey = true;
         }
     }
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider other)
     {
-        if(col.gameObject.tag == "RayCast")
+        Debug.Log(other.gameObject.name);
+        if(other.gameObject.name == "RayCast")
         {
             CanPickKey = true;
         }
     }
-    void OnTriggerExit(Collider col)
+    void OnTriggerExit(Collider other)
     {
-        if(col.gameObject.tag == "RayCast")
+        if(other.gameObject.name == "RayCast")
         {
             CanPickKey = false;
         }
